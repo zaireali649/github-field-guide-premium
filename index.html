@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0f1720" />
+    <title>GitHub Field Guide: Git, GitHub, and how a website goes live</title>
+    <meta
+      name="description"
+      content="A plain-language field guide for first-time developers: what Git and GitHub actually are, the words you will hear, and how code travels from your laptop to a live website."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav">
+      <a class="nav__logo" href="#top">GH·FG</a>
+      <nav aria-label="Sections">
+        <ul class="nav__links">
+          <li><a href="#foundations">Foundations</a></li>
+          <li><a href="#flow">Laptop to live</a></li>
+          <li><a href="#glossary">Glossary</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero__orb hero__orb--sage" aria-hidden="true"></div>
+        <div class="hero__orb hero__orb--clay" aria-hidden="true"></div>
+        <picture class="hero__art">
+          <source
+            type="image/webp"
+            srcset="/images/hero-800.webp 800w, /images/hero-1600.webp 1600w"
+            sizes="(max-width: 900px) 100vw, 60vw"
+          />
+          <img
+            src="/images/hero.png"
+            alt="A spiral glass staircase climbing around a terracotta pillar in a dark studio"
+            width="2688"
+            height="1520"
+            fetchpriority="high"
+          />
+        </picture>
+        <div class="hero__text">
+          <p class="eyebrow">Field guide · No. 01</p>
+          <h1 id="hero-title" class="display">
+            <span>GitHub</span>
+            <span class="outline">Field Guide</span>
+          </h1>
+        </div>
+        <div class="hero__foot">
+          <p class="hero__lede">
+            Every word you will hear in your first month with Git and GitHub, explained once,
+            plainly, in the order you will actually meet them. Then the full path from a folder on
+            your laptop to a live website.
+          </p>
+          <a class="hero__arrow" href="#foundations" aria-label="Scroll to the first chapter">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+              <path d="M12 4v16m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- CHAPTER 01: FOUNDATIONS -->
+      <section class="chapter chapter--light" id="foundations" aria-labelledby="ch1">
+        <div class="chapter__head">
+          <p class="eyebrow">Chapter 01</p>
+          <h2 id="ch1" class="display display--md">Git is not GitHub</h2>
+        </div>
+        <div class="split">
+          <div class="split__aside reveal">
+            <p class="split__label">The distinction everything else rests on</p>
+            <ul class="linelist">
+              <li>Git runs on your machine</li>
+              <li>GitHub runs on the web</li>
+              <li>You can use Git without GitHub</li>
+              <li>You cannot use GitHub without Git</li>
+            </ul>
+          </div>
+          <div class="split__body reveal">
+            <p class="lead">
+              <strong>Git</strong> is a program installed on your computer. It watches a folder and
+              lets you save named snapshots of it over time, so you can look back, compare, and undo.
+              It works entirely offline.
+            </p>
+            <p class="lead">
+              <strong>GitHub</strong> is a website that holds a copy of that folder and its history
+              online, so other people (and other machines) can reach it. On top of storage it adds
+              review tools, a to-do list, and automation. GitHub is one of several such services;
+              GitLab and Bitbucket do the same job.
+            </p>
+            <p class="lead lead--em">
+              One more line worth memorising: putting code on GitHub does not make a website. It
+              stores the code. Something else has to build it and serve it. That is
+              <a href="#flow">chapter three</a>.
+            </p>
+          </div>
+        </div>
+
+        <ol class="cards" aria-label="Foundation terms">
+          <li class="card reveal">
+            <span class="card__n">01</span>
+            <h3>Repository</h3>
+            <p>A project folder Git is tracking. Usually shortened to <em>repo</em>. One repo, one project.</p>
+          </li>
+          <li class="card reveal">
+            <span class="card__n">02</span>
+            <h3>Local and remote</h3>
+            <p><em>Local</em> is the copy on your computer. <em>Remote</em> is the copy on GitHub. They only match after you sync them.</p>
+          </li>
+          <li class="card reveal">
+            <span class="card__n">03</span>
+            <h3>Clone</h3>
+            <p>Download a complete copy of a remote repo, history and all, already wired to push back to it.</p>
+            <code>git clone https://github.com/you/site.git</code>
+          </li>
+          <li class="card reveal">
+            <span class="card__n">04</span>
+            <h3>README</h3>
+            <p>A Markdown file GitHub shows on the repo home page. Write what the project is and how to run it.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- CHAPTER 02: SAVING AND SHARING -->
+      <section class="chapter chapter--dark" id="saving" aria-labelledby="ch2">
+        <div class="chapter__head">
+          <p class="eyebrow">Chapter 02</p>
+          <h2 id="ch2" class="display display--md">Saving work, sharing work</h2>
+        </div>
+
+        <div class="feature">
+          <figure class="feature__art reveal">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/images/chapter-800.webp 800w, /images/chapter-1600.webp 1600w"
+                sizes="(max-width: 900px) 100vw, 50vw"
+              />
+              <img
+                src="/images/chapter.png"
+                alt="Glass steps spiralling upward past a terracotta wall, each step a level above the last"
+                width="2688"
+                height="1520"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>Each commit is one step. The branch is the staircase.</figcaption>
+          </figure>
+          <div class="feature__text reveal">
+            <p class="split__label">The daily loop</p>
+            <h3 class="display display--sm">Edit. Commit. Push.</h3>
+            <p class="lead">
+              A <strong>commit</strong> is a saved snapshot with a message saying why. Commits pile
+              up into history. A <strong>branch</strong> is a separate line of commits so you can
+              try something without disturbing <strong>main</strong>, the branch everyone treats as
+              the stable version.
+            </p>
+            <p class="lead">
+              <strong>Push</strong> uploads your commits to GitHub. <strong>Pull</strong> downloads
+              commits others pushed. A <strong>diff</strong> is the line-by-line view of what
+              changed, which you read before committing and before approving anyone else&rsquo;s work.
+            </p>
+          </div>
+        </div>
+
+        <div class="terminal reveal" role="figure" aria-label="Example terminal session for a small change">
+          <div class="terminal__bar"><span></span><span></span><span></span> your-site</div>
+          <pre><code><span class="c"># start a branch for the change</span>
+git switch -c fix-header
+
+<span class="c"># ...edit files...</span>
+git diff                          <span class="c"># read what you changed</span>
+git add .
+git commit -m "Fix header alignment on mobile"
+
+<span class="c"># share it</span>
+git push -u origin fix-header</code></pre>
+        </div>
+
+        <dl class="defs reveal">
+          <div>
+            <dt>Commit</dt>
+            <dd>Snapshot plus message. Small and frequent beats large and rare.</dd>
+          </div>
+          <div>
+            <dt>Branch</dt>
+            <dd>Parallel line of work. Cheap to make, easy to throw away.</dd>
+          </div>
+          <div>
+            <dt>main</dt>
+            <dd>The default branch. Older repos call it master. Just a name.</dd>
+          </div>
+          <div>
+            <dt>Push / Pull</dt>
+            <dd>Up to the remote, down from the remote. Pull before you start; push when you finish.</dd>
+          </div>
+          <div>
+            <dt>Diff</dt>
+            <dd>Removed lines start with a minus, added lines with a plus.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- CHAPTER 02b: COLLABORATING -->
+      <section class="chapter chapter--stone" id="collaborating" aria-labelledby="ch2b">
+        <div class="chapter__head">
+          <p class="eyebrow">Chapter 02 · continued</p>
+          <h2 id="ch2b" class="display display--md">Working with other people</h2>
+        </div>
+        <div class="split">
+          <div class="split__aside reveal">
+            <p class="split__label">Where each thing happens</p>
+            <ul class="linelist">
+              <li>Merge: Git, on any machine</li>
+              <li>Conflict: Git, on your machine</li>
+              <li>Pull request: GitHub</li>
+              <li>Issue: GitHub</li>
+              <li>Fork: GitHub</li>
+            </ul>
+          </div>
+          <div class="split__body reveal">
+            <p class="lead">
+              A <strong>pull request</strong> (PR) is GitHub&rsquo;s way of saying &ldquo;I would
+              like these commits from my branch to go into main. Please look.&rdquo; It shows the
+              diff, hosts the discussion, and has a Merge button. It is a GitHub feature, not a Git
+              command.
+            </p>
+            <p class="lead">
+              <strong>Merge</strong> combines one branch into another. When two branches changed the
+              same lines, Git stops and reports a <strong>merge conflict</strong>. It marks the spot
+              in the file; you pick the version you want, delete the markers, and commit. Normal,
+              not a disaster.
+            </p>
+            <p class="lead">
+              An <strong>issue</strong> is a ticket: a bug, a task, an idea. A <strong>fork</strong>
+              is your own copy of someone else&rsquo;s repo on GitHub, so you can change it and
+              then offer the changes back through a PR.
+            </p>
+          </div>
+        </div>
+        <div class="terminal terminal--conflict reveal" role="figure" aria-label="What a merge conflict looks like inside a file">
+          <div class="terminal__bar"><span></span><span></span><span></span> index.html (conflicted)</div>
+          <pre><code>&lt;h1&gt;
+<span class="mk">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
+  Welcome to my site
+<span class="mk">=======</span>
+  Welcome to our site
+<span class="mk">&gt;&gt;&gt;&gt;&gt;&gt;&gt; fix-header</span>
+&lt;/h1&gt;
+
+<span class="c"># keep one line, delete the three marker lines, then:</span>
+git add index.html
+git commit</code></pre>
+        </div>
+      </section>
+
+      <!-- CHAPTER 03: LAPTOP TO LIVE -->
+      <section class="chapter chapter--dark" id="flow" aria-labelledby="ch3">
+        <div class="chapter__head">
+          <p class="eyebrow">Chapter 03</p>
+          <h2 id="ch3" class="display display--md">From laptop to live</h2>
+        </div>
+        <p class="lead lead--wide reveal">
+          Three places, three jobs. Your <strong>laptop</strong> is where you write and test.
+          <strong>GitHub</strong> is where the code is stored and reviewed. A host such as
+          <strong>Vercel</strong> watches the GitHub repo, builds the site whenever main changes,
+          and serves the result at a public address. GitHub never serves your site; the host does.
+        </p>
+
+        <ol class="steps" aria-label="Deployment flow">
+          <li class="step reveal">
+            <span class="step__n">1</span>
+            <div>
+              <h3>Build locally</h3>
+              <p>Make the folder a repo and confirm the site runs on your machine first.</p>
+              <pre><code>git init
+npm install
+npm run dev</code></pre>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">2</span>
+            <div>
+              <h3>Commit and push to GitHub</h3>
+              <p>Create an empty repo on github.com, then connect and upload.</p>
+              <pre><code>git add .
+git commit -m "Initial site"
+git remote add origin https://github.com/you/site.git
+git push -u origin main</code></pre>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">3</span>
+            <div>
+              <h3>Connect the repo to Vercel</h3>
+              <p>
+                In Vercel, choose Import Project and pick the GitHub repo. Vercel reads the framework,
+                runs the build command, and publishes the output. You do not upload files by hand.
+              </p>
+              <pre><code>Build command:  npm run build
+Output folder:  dist</code></pre>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">4</span>
+            <div>
+              <h3>Every push deploys</h3>
+              <p>
+                Pushes to main become the <strong>production</strong> deployment. Pushes to any other
+                branch or PR get a preview URL so you can check before it goes live.
+              </p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">5</span>
+            <div>
+              <h3>Point a domain at it</h3>
+              <p>
+                Buy a <strong>domain</strong> from a registrar, add it in Vercel, and set the DNS
+                records Vercel shows you. HTTPS is issued automatically.
+              </p>
+            </div>
+          </li>
+        </ol>
+
+        <aside class="note reveal">
+          <p class="split__label">Where GitHub Actions fits</p>
+          <p>
+            <strong>GitHub Actions</strong> runs scripts inside GitHub when something happens, most
+            often running tests on every push or PR. It can also deploy, but with Vercel you rarely
+            need it for that: Vercel deploys by watching the repo itself. Use Actions to catch broken
+            builds before they reach the host.
+          </p>
+          <pre><code><span class="c"># .github/workflows/ci.yml</span>
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm run build</code></pre>
+        </aside>
+      </section>
+
+      <!-- GLOSSARY -->
+      <section class="chapter chapter--light" id="glossary" aria-labelledby="gl">
+        <div class="chapter__head">
+          <p class="eyebrow">Reference</p>
+          <h2 id="gl" class="display display--md">Glossary</h2>
+        </div>
+        <form class="search" role="search" onsubmit="return false">
+          <label for="q" class="split__label">Filter the terms</label>
+          <input id="q" type="search" placeholder="Try: push, conflict, deploy" autocomplete="off" />
+          <p class="search__count" id="q-count" aria-live="polite"></p>
+        </form>
+        <div id="glossary-list" class="glossary"></div>
+      </section>
+
+      <!-- QUIZ -->
+      <section class="chapter chapter--stone" id="quiz" aria-labelledby="qz">
+        <div class="chapter__head">
+          <p class="eyebrow">Check yourself</p>
+          <h2 id="qz" class="display display--md">Six questions</h2>
+        </div>
+        <div id="quiz-root" class="quiz"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <h2 class="display display--lg footer__title">Keep<br /><span class="outline">Shipping</span></h2>
+      <p class="footer__note">
+        Start small: make a repo, commit once, push once, connect it to a host. The rest of the
+        vocabulary arrives on its own.
+      </p>
+      <ul class="footer__links">
+        <li><a href="https://git-scm.com/doc" rel="noopener">Git documentation</a></li>
+        <li><a href="https://docs.github.com/en/get-started" rel="noopener">GitHub getting started</a></li>
+        <li><a href="https://vercel.com/docs/git" rel="noopener">Vercel Git integration</a></li>
+      </ul>
+      <div class="footer__bottom">
+        <span>GitHub Field Guide</span>
+        <span>Built for a first-time developer. Learn by doing.</span>
+      </div>
+    </footer>
+  </body>
+</html>

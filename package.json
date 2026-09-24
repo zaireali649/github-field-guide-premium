@@ -1,0 +1,18 @@
+{
+  "name": "github-field-guide",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
+    "@fontsource/anton": "^5.3.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1"
+  }
+}
